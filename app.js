@@ -33,7 +33,7 @@ app.post("/register", async (request, response) => {
   const { username, name, password, gender, location } = request.body;
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const searchUserQuery = `select * from user where username= "${username}"`;
+  const searchUserQuery = `select * from user where username= "${username};"`;
   const result = await db.get(searchUserQuery);
 
   if (result === undefined && password.length >= 5) {
